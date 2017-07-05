@@ -1,0 +1,101 @@
+body {
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	background: #eee;
+	color: #222;
+}
+
+h1 {
+	font-size: 1.8em;
+	margin: 1em 50px;
+}
+
+#controls {
+	margin: 0;
+	padding: 0 1em;
+	width: 18em;
+	position: fixed;
+	top: 2em;
+	right: 2em;
+	background: #fff;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	z-index:100;
+	box-shadow: 5px 5px 25px rgba(0,0,0,0.5);
+-webkit-box-shadow: 5px 5px 25px rgba(0,0,0,0.5);
+-moz-box-shadow: 5px 5px 25px rgba(0,0,0,0.5);
+}
+
+#airlock {
+	font-size: 1.2em;
+	margin: 20px auto 0;
+	padding: 1em;
+	width: 70%;
+	font-family: Garamond, Georgia, serif;
+	background: #fff;
+	border: 2px solid rgba(0,0,0,0.1);
+	border-top-color: rgba(0,0,0,0.1);
+	border-left-color: rgba(0,0,0,0.1);
+	box-shadow: 5px 5px 25px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 5px 5px 25px rgba(0,0,0,0.5);
+	-moz-box-shadow: 5px 5px 25px rgba(0,0,0,0.5);
+	height: 100%;
+}
+#vjs-input-startTime-annotations{
+	/* display:none;*/
+}
+.vjs-loading-spinner{
+	display: none !important;
+}
+
+#svg_paper {
+	float: left;
+        position: absolute;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+      }
+      #video {
+	float: left;
+        position: absolute;
+        background-repeat: no-repeat;
+        z-index: 9000;
+      }
+
+      #dv {
+        float: left;
+        background:#3B3B3B;
+      }
+    .paper svg {
+	    float: left;
+        position: absolute !important;
+        border: none;
+            cursor: crosshair;
+            z-index: 9001 ;
+            -moz-opacity: 0.5;          /* Netscape */
+	    -khtml-opacity: 0.5;        /* Safari 1.x */
+	    opacity: 0.5;               
+        }
+
+.userinput {
+    position: absolute;
+    border: none;
+    display: none;
+}
+#airlock{
+	position: relative;
+}  
+#svg_paper{
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: none;
+	display: none;
+}
+canvas{
+	border: none !important;
+}
+.annotator-widget{
+	z-index: 9999999;
+}

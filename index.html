@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Video Annotation</title>
+
+     
+
+    <!-- Annotator -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script src="lib/annotator-full.js"></script>
+	<link rel="stylesheet" href="http://assets.annotateit.org/annotator/v1.2.7/annotator.min.css">
+
+	<script type="text/javascript" src="lib/main.js"></script>
+
+	<!--video-js-->
+	<link href="http://vjs.zencdn.net/4.2/video-js.css" rel="stylesheet">
+	<script src="lib/video-js/video.min.js"></script>
+	
+	<!--Youtube Pluging-->
+	<script src="lib/video-js/vjs.youtube.js"></script>
+	
+	<!--RangeSlider Pluging-->
+	<script src="lib/rangeslider.min.js"></script>
+	<link href="lib/rangeslider.min.css" rel="stylesheet">
+	
+	<!--Share Pluging-->
+	<script src="lib/share-annotator.min.js"></script>
+	<link href="lib/share-annotator.min.css" rel="stylesheet">
+	
+	<!--Geolocation Pluging-->
+	<script src="lib/geolocation-annotator.min.js"></script>
+	<link href="lib/geolocation-annotator.min.css" rel="stylesheet">
+	
+	<!--RichText Pluging-->
+	<script src="lib/tinymce/tinymce.min.js"></script>
+	<!--tinymce for richText-->
+	<script src="lib/richText-annotator.min.js"></script>
+	<link href="lib/richText-annotator.min.css" rel="stylesheet">
+
+	<!--OpenVideoAnnotations Pluging-->
+	<script src="src/ova.js"></script>
+	<link href="src/ova.css" rel="stylesheet">
+
+	<script type="text/javascript" src="lib/raphael-min.js"></script>
+
+	<!--Demo CSS-->
+	<link href="demo.css" rel="stylesheet">
+  </head>
+
+  <body style="margin:10px">
+   
+    <div id="airlock">
+			<video id="vid1" class="video-js vjs-default-skin" controls preload="none" width="100%" height="490" 
+			data-setup='' autoplay>
+				<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type='video/mp4' />
+			</video>
+     <div class="paper" id="svg_paper" style="width:500px;height:270px;background:transparent;" />
+     <div class="paper" id="selected_rect" style="background:transparent;"/>
+
+	<!--And you could use youtube video:
+	<br />
+	<video id="vid3" class="video-js vjs-default-skin" controls preload="none" width="100%" height="500"
+	data-setup='{techOrder: ["html5","flash","youtube"]}'>
+		<source src="http://www.youtube.com/watch?v=-m_S-IDs3Wg" type="video/youtube">
+	</video>-->
+	
+    </div>
+	<div onclick="ova.playTarget('8I2NBkJbQoeF3-bqgpcwTw')"></div>
+	<div onclick="ova.newVideoAn('vid1')"></div> 
+    </div>
+ 
+    <script>
+        
+        var canvasHeight = $(window).height()-85;
+        var vidHeight = $('#airlock').height() - 50;
+        var canvasWidth = $('#airlock').width();
+        var paper = Raphael("svg_paper", canvasWidth, vidHeight);
+        var selectionRect = Raphael("selected_rect", canvasWidth, vidHeight);
+
+    	//Options to load in Open Video Annotation, for all the plugins
+    	var options = {
+    		optionsAnnotator: {
+				permissions: { },
+				
+				//auth: {tokenUrl:'http://catch.aws.af.cm/annotator/token'},
+				
+				store: {
+					// The endpoint of the store on your server.
+					//prefix: 'http://afstore.aws.af.cm/annotator',
+					//prefix: 'http://danielcebrian.com/annotations/api',
+					prefix: 'http://webservices.annotation',
+					
+					annotationData: {
+						uri:''
+					},
+
+					urls: {
+						// These are the default URLs.
+						create:  '/annotation',
+						read:    '/annotation',
+						update:  '/annotation',
+						destroy: '/annotation',
+						search:  '/annotation'
+					},
+					
+					loadFromSearch:{
+						limit: 0,
+						uri: '',
+					}
+				},
+				richText: {
+					tinymce:{
+						selector: "li.annotator-item textarea",
+						plugins: "media image insertdatetime link code",
+						menubar: false,
+						toolbar_items_size: 'small',
+						extended_valid_elements : "iframe[src|frameborder|style|scrolling|class|width|height|name|align|id]",
+						toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media rubric | code ",
+					}
+				},
+				share: {}, //Share plugin
+				annotator: {}, //Annotator core
+			},
+			optionsVideoJS: {techOrder: ["html5","flash","youtube"]},
+			optionsRS: {},
+    		optionsOVA: {posBigNew:'center',NumAnnotations:40},
+    	}
+    	//Load the plugin Open Video Annotation
+		var ova = new OpenVideoAnnotation.Annotator($('#airlock'),options);
+		var windowHeight = $(window).height()-85;
+		$("#airlock").css("height", windowHeight - 100);
+		//change the user (Experimental)
+		ova.setCurrentUser($('#username').val());
+		$('#username').change(function () {
+			ova.setCurrentUser($(this).val());
+		});
+
+
+    </script>
+   
+  </body>
+
+
+</html>

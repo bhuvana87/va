@@ -1,0 +1,35 @@
+	"user": "bhuvan",
+	"video": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
+	"annotation_data": {
+		"ranges": [],
+		"quote": "",
+		"swidth": 230,
+		"sheight": 293,
+		"text": "<p>Very Fast ...</p>",
+		"media": "video",
+		"target": {
+			"container": "vid1",
+			"src": "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4",
+			"ext": ".mp4"
+		},
+		"rangeTime": {
+			"start": 50.470674,
+			"end": 56.4801751
+		},
+		"xcoord": 163.84375,
+		"ycoord": 85.8125,
+		"updated": "2017-07-04T11:02:40.706Z",
+		"created": "2017-07-04T11:02:30.883Z",
+		"uri": "",
+		"id": "2531",
+		"highlights": {
+			"0": {
+				"jQuery1720769919833605385": 42
+			},
+			"context": {
+				"jQuery1720769919833605385": 42
+			},
+			"length": 1
+		}
+	}
+	}
